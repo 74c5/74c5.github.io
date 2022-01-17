@@ -1,0 +1,81 @@
+/* start reset - https://www.digitalocean.com/community/tutorials/css-minimal-css-reset */
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+margin: 0;
+padding: 0;
+font-weight: normal;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+/* reset end */
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+}
+
+.card {
+    max-width: 1024;
+    width: 95vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #EEE;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px rgb(35, 35, 201);
+}
+
+#title {
+    color: #1a1a33;
+    font-weight: bold;
+}
+
+#graph {
+    flex-grow: 1;
+    width: 100%;
+}
+
+svg {
+    overflow: visible;
+}
+
+.dot:hover {
+    fill: rgb(199, 54, 138);
+}
+
+.dope {
+    fill: rgb(54, 54, 199);
+}
+
+.no-dope {
+    fill: rgb(83, 199, 54);
+}
+
+#tooltip {
+    font-size: 0.75rem;
+    background-color: darkgrey;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 200px;
+}
+
