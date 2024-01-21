@@ -1,0 +1,366 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Biryani&family=Cormorant+Infant:wght@400;700&family=Give+You+Glory&display=swap');
+
+/* colours */
+:root {
+    --primary-1: #DCEDF6;
+    --primary-2: #ABCFE1;
+    --primary-3: #7AACC4;
+    --primary-4: #4F86A1;
+    --primary-5: #336E8A;
+    --secondary-1: #DFE2F7;
+    --secondary-2: #B3B9E5;
+    --secondary-3: #868ECD;
+    --secondary-4: #5E67AF;
+    --secondary-5: #3F4996;
+    --tertiary-1: #DCF8E8;
+    --tertiary-2: #ADE7C6;
+    --tertiary-3: #7ED1A2;
+    --tertiary-4: #54B57E;
+    --tertiary-5: #349B61;
+    --highlight-1: #F8A3AD;
+    --highlight-2: #E26271;
+    --highlight-3: #C13344;
+    --highlight-4: #961322;
+    --highlight-5: #60000B;
+}
+
+
+/* start reset - https://www.digitalocean.com/community/tutorials/css-minimal-css-reset */
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5,
+h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* reset end */
+
+body {
+    /* font-family: 'Give You Glory', cursive; */
+    /* font-family: 'Cormorant Infant', serif; */
+    font-family: 'Biryani', sans-serif;
+    background-color: var(--primary-1);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem;
+    margin-top: 3rem;
+    width: max-content;
+}
+
+.controls-task-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 300px;
+    transition: width 4s ease-in-out;
+}
+
+.input-new-task {
+    font-family: 'Give You Glory', cursive;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 600;
+    flex-grow: 1;
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 3px var(--primary-2);
+    color: var(--secondary-2);
+    transition: width 4s ease-in-out;
+}
+
+.input-new-task:focus-visible {
+    outline: none;
+    box-shadow: 0 0 6px var(--secondary-3);
+    color: var(--primary-5);
+}
+
+.btn-randomize, .btn-help {
+    position: relative;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--tertiary-1);
+    background-color: var(--primary-3);
+    border-radius: 0.75rem;
+    border: none;
+    /* border: 1px solid var(--secondary-2); */
+    box-shadow: 0 0 3px var(--primary-2);
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-randomize > span {
+    position: relative;
+    top: -0.05rem;
+}
+
+.btn-randomize:hover, .btn-help:hover {
+    color: var(--highlight-3);
+    box-shadow: 0 0 5px var(--secondary-3);
+    text-shadow: 0px 0px 3px var(--tertiary-1);
+}
+
+.list-tasks {
+    align-self: stretch;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    max-width: 85vw;
+    background-color: var(--primary-3);
+    color: var(--tertiary-1);
+    border-radius: 0.75rem;
+    border: none;
+    overflow: hidden;
+    height: auto;
+    /* transition properties */
+    padding: 0.75rem 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 3px var(--primary-2);
+    height: auto;
+    opacity: 1;
+    transform: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.task:hover, .task.highlight {
+    /* border: 1px solid var(--primary-3); */
+    box-shadow: 0 0 5px var(--secondary-4);
+}
+
+.task.shrunk {
+    margin: 0;
+    padding: 0;
+    height: 0;
+}
+
+.task.hidden {
+    opacity: 0.5;
+    transform: rotateX(90deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.dragging {
+    opacity: 0.5;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.insert-before {
+    margin-top: 1.5rem;
+    transition: margin-top 0.2s ease-in-out;
+}
+
+.grabber-task {
+    cursor: move;
+    text-align: center;
+    width: 2rem;
+    /* border-right: 1px dashed var(--primary-2); */
+    color: var(--primary-1);
+    background-color: var(--primary-3);
+}
+
+.grabber-task > span {
+    position: relative;
+    top: -0.05rem;
+}
+
+.grabber-task:hover {
+    color: var(--highlight-3);
+    text-shadow: 0px 0px 3px var(--tertiary-1);
+}
+
+.text-task, .input-edit-task {
+    font-family: 'Give You Glory', cursive;
+    font-size: 1.25rem;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.text-task {
+    opacity: 1;
+    /* padding-left: 0.5rem; */
+    text-decoration: none;
+    cursor: pointer;
+    transition: text-decoration 0.4s ease-in-out, color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.task.done > .text-task {
+    color: var(--primary-2);
+    text-decoration: line-through;
+    transition: text-decoration 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+.input-edit-task {
+    border-radius: 0.75rem;
+    border: 1px solid var(--primary-2);
+    outline: none;
+    box-shadow: 0 0 3px var(--tertiary-3);
+    color: var(--primary-5);
+    padding-left: 0.5rem;
+    /* transition effects */
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.input-edit-task.hidden, .text-task.hidden {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.input-edit-task.removed, .text-task.removed {
+    display: none;
+}
+
+.controls-task {
+    display: flex;
+    align-items: center;
+}
+
+.btn-edit-task, .btn-delete-task {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    color: var(--primary-1);
+    background-color: var(--primary-3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete-task {
+    font-size: 2rem;
+}
+
+.btn-edit-task:hover, .btn-delete-task:hover {
+    color: var(--highlight-3);
+    text-shadow: 0px 0px 3px var(--tertiary-1);
+}
+
+.btn-edit-task > span {
+    position: relative;
+    top: -0.2rem;
+}
+
+.btn-delete-task > span {
+    position: relative;
+    top: -0.525rem;
+}
+
+.modal-help {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    color: var(--tertiary-1);
+    z-index: 1;
+    transition: left 0.4s ease-in-out, background-color 0.3s ease-in-out 0.3s;
+}
+
+.off-screen-left {
+    left: -100vw;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.3s ease-in-out, left 0.4s ease-in-out 0.3s;
+}
+
+.container-help {
+    position: relative;
+    top: 1.5rem;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    border-radius: 2rem;
+    background-color: var(--secondary-3);
+    padding: 1rem 2rem 1rem 4rem;
+    
+}
+
+.container-help > h3 {
+    font-family: 'Cormorant Infant', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-2);
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-close-help {
+    position: absolute;
+    right: 1.75rem;
+    top: 0.75rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--tertiary-1);
+    background-color: var(--secondary-3);
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-close-help:hover {
+    color: var(--highlight-3);
+    box-shadow: 0 0 5px var(--secondary-3);
+    text-shadow: 0px 0px 3px var(--tertiary-1);
+}
+
+.container-help > ul > li {
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.icon-help {
+    color: var(--highlight-3);
+}
+
+footer {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-5);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.reverse {
+    transform: rotateY(180deg);
+    display: inline-block;
+}
