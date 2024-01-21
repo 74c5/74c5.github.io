@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helter-Skelter</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="shortcut icon" href="./wip.png" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <div class="controls-task-list">
+            <button id="btn-help" class="btn-help" type="button"><span>&#65311;</span></button>
+            <!-- ? or &#10067; or &#65110; or &#65311;-->
+            <input id="input-new-task" class="input-new-task" type="text" placeholder="Enter new task" size="15">
+            <button id="btn-randomize" class="btn-randomize" type="button"><span>&#10607;</span></button>
+            <!-- &#8651; or  or &#128472; -->
+        </div>
+        <section id="list-tasks" class="list-tasks">
+            <!-- see insertDomTask() for task structure -->
+        </section>
+    </main>
+    <aside id="modal-help" class="modal-help off-screen-left">
+        <div class="container-help">
+            <button class="btn-close-help"><span>&times;</span></button>
+            <h3>Help</h3>
+            <ul>
+                <li>
+                    This fun project is not meant to be a fully fledged task manager.<br>
+                    It's is more suited focusing on a daily priory list or the next set of tasks (GTD).<br>
+                    The randomization function is meant to overcome indecision inertia...<br>
+                    i.e. If I can't decide what to do next, then perhaps the computer can push me in the right direction.
+                </li>
+                <li>
+                    To add a new task: Enter task text into the input field - at page top - and press &lt;ENTER&gt;<br>
+                    Your new task will be added, in the card, at the bottom of the list.
+                </li>
+                <li>
+                    To mark a task as completed: Click anywhere on the task card.<br>
+                    Marked tasks are dimmed and struck out<br>
+                    Clicking the card again will mark the task incomplete.
+                </li>
+                <li>
+                    To edit task text: Click the <span class="icon-help">&#10226;</span> icon in the card, then edit the text.<br> 
+                    Clicking outside the card, pressing tab or &lt;ENTER&gt; will apply the edit.<br>
+                    NOTE: Editing a completed task will mark that task remove its completed status.
+                    NOTE: If the task text has not been changed, then &lt;ENTER&gt; will not exit 'edit' mode.<br>
+                </li>
+                <li>
+                    To delete a task: Click the <span class="icon-help">&times;</span> icon in the card.<br>
+                    NOTE: Deleting a task will permanently remove a task from your list.
+                </li>
+                <li>
+                    To Randomize list order: Click the <span class="icon-help">&#10607;</span> icon in the top controls.<br>
+                    Incomplete tasks are shuffled randomly, while completed tasks moved to the bottom of the list.
+                </li>
+                <li>
+                    To re-order tasks: Grab the task (hold down left click) and drag to required location.
+                </li>
+                <li>
+                    Tasks are backed up to browser local storage. Your task list will therefore persist between browser sessions. 
+                    Deleting browser data, will delete your list.
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <footer><span class="reverse">&copy;</span> tacs 2022</footer>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
